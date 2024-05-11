@@ -6,7 +6,7 @@ $dbconn;
 
 /**
  * Connects to the website database
- * @return bool Returns False on fail True on success
+ * @return void
  */
 function connect_to_db() {
     global $dbconn;
@@ -18,7 +18,10 @@ function connect_to_db() {
 
     $dbconn = mysqli_connect($servername, $username, $password, $dbname);
 
-    return !(!$dbconn);
+    if (!$dbconn) {
+        respond_with_db_down();
+        exit;
+    }
 }
 
 function disconnect_from_db() {
