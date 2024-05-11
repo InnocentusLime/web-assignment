@@ -65,39 +65,18 @@ section {
     margin-bottom: 30px;
 }
 
-.featured-article {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.product-card {
+  float: left;
+  width: 33.33%;
 }
 
-.featured-article h2 {
-    margin-bottom: 20px;
+/* Clear floats after the columns */
+.product-grid:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.featured-article article {
-    display: flex;
-    align-items: center;
-}
-
-.featured-article img {
-    max-width: 300px;
-    margin-right: 20px;
-}
-
-.article-details h3 {
-    margin-bottom: 10px;
-}
-
-.article-details p {
-    margin-bottom: 10px;
-}
-
-.article-details a {
-    color: #007bff;
-    text-decoration: none;
-}
 
 .product {
     background-color: #fff;
