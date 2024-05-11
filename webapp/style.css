@@ -41,10 +41,11 @@ header h1 {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  border-radius: 10px;
 }
 
 .topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #ddd;
+  background-color: #4da3ff;
   color: black;
 }
 
@@ -83,7 +84,7 @@ header h1 {
 }
 
 .topnav .search-container button:hover {
-  background: #ccc;
+  background: #4da3ff;
 }
 
 .dropdown {
@@ -94,6 +95,7 @@ header h1 {
 .dropdown .dropbtn {
   font-size: 17px;  
   border: none;
+  border-radius: 10px;
   outline: none;
   color: #fff;
   padding: 18px 16px;
@@ -104,6 +106,7 @@ header h1 {
 
 .dropdown-content {
   display: none;
+  border-radius: 10px;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -121,8 +124,8 @@ header h1 {
 }
 
 .dropdown-content a:hover {
-  background-color: #007bff;
-  color: white;
+  background-color: #4da3ff;
+  color: black;
 }
 
 .dropdown:hover .dropdown-content {
