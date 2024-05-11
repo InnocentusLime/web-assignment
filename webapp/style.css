@@ -138,6 +138,10 @@ section {
     cursor: pointer;
 }
 
+.category-block img {
+    max-width: 300px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
