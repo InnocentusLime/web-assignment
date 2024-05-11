@@ -115,6 +115,10 @@ section {
     margin-right: 20px;
 }
 
+.product-card img {
+    max-width: 300px;
+}
+
 .product-details h3 {
     margin-bottom: 10px;
 }

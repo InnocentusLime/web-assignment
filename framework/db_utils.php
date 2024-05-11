@@ -57,3 +57,34 @@ function get_item_info($item_id) {
 
     return mysqli_fetch_assoc($result);
 }
+
+/**
+ * Gets info for a tag.
+ * @param int $tag_id The tag id
+ * @return bool|array
+ */
+function get_tag_info($tag_id) {
+    global $dbconn;
+
+    $sql = "SELECT name, img_url FROM tags WHERE tags.id = $tag_id";
+    $result = mysqli_query($dbconn,$sql);
+
+    if (mysqli_num_rows($result) != 1) {
+        return false;
+    }
+
+    return mysqli_fetch_assoc($result);
+}
+
+/**
+ * Selects latest 10 items
+ * @return array
+ */
+function get_latest_items10() {
+    global $dbconn;
+
+    $sql = "SELECT id, name, price, img_url from products order by id desc limit 10";
+    $result = mysqli_query($dbconn, $sql);
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
