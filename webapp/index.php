@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-
 <?php
+require "../famework/blocks.php";
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -19,24 +19,21 @@ $result = mysqli_query($conn, $sql);
 mysqli_close($conn);
 ?>
 
-<html>
-    <head>
-        <title>PHP Test</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <?php echo '<p>Hello World! PHP WOOOORKS!!!!</p>'; ?>
-        <?php
-        // Checking if the query was successful
-        if (mysqli_num_rows($result) > 0) {
-            // Outputting the data
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "ID: " . $row["test_idx"] . " - amount: " . $row["amount"] . "</br>";
-            }
-        } else {
-            echo "0 results";
-        }
-        ?>
-        <img src ="goth.jpg"/>
-    </body>
-</html>
+<?php begin_common_page("main"); ?>
+<?php
+echo '<p>Hello World! PHP WOOOORKS!!!! :)</p>';
+if (!isset($_SESSION)) {
+    echo "No session";
+}
+if (mysqli_num_rows($result) > 0) {
+    // Outputting the data
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "ID: " . $row["test_idx"] . " - amount: " . $row["amount"] . "</br>";
+    }
+} else {
+    echo "0 results";
+}
+?>
+<img src ="goth.jpg"/>
+
+<?php end_common_page(); ?>
