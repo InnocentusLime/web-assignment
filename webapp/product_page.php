@@ -1,6 +1,7 @@
 <?php
 require_once "blocks.php";
-require_once "db_utils.php"
+require_once "db_utils.php";
+require_once "price_utils.php";
 ?>
 
 <?php
@@ -18,10 +19,6 @@ if (!$item_data) {
     respond_with_just_code(404, "Item not found");
     exit;
 }
-
-$price = intval($item_data["price"]);
-$dollars = intdiv($price, 100);
-$cents = $price % 100;
 ?>
 
 <?php begin_common_page("Product Page"); ?>
@@ -31,7 +28,7 @@ $cents = $price % 100;
     <div class="product-details">
         <h2><?php echo $item_data["name"] ?></h2>
         <p><?php echo $item_data["descr"] ?></p>
-        <p>Price: $<?php printf("%d.%02d", $dollars, $cents) ?></p>
+        <p>Price: <?php echo format_price(intval($item_data["price"])) ?></p>
         <a class="button" href="/api/add_to_cart.php?item_id=<?php echo $item_id ?>">Add to Cart</a>
     </div>
 </article>

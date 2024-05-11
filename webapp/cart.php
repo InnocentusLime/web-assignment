@@ -1,6 +1,6 @@
 <?php
-require_once "blocks.php";
-require_once "db_utils.php"
+require_once "db_utils.php";
+require_once "price_utils.php";
 ?>
 
 <?php
@@ -34,11 +34,16 @@ foreach ($to_delete as $item_id) {
     echo "ITEM($item_id) no longer avaliable </br>";
 }
 
+$total = 0;
 foreach (get_cart_items() as $item_id => $quant) {
     echo "<img width=100 height=100 src=\"/img/product/" . $items[$item_id]["img_url"] . "\"/>";
     echo " -- " . $items[$item_id]["name"];
-    echo " x $quant </br>";
+    echo ": " . format_price($items[$item_id]["price"]) . " x $quant </br>";
+
+    $total += $items[$item_id]["price"] * $quant;
 }
+
+echo "Your total: " . format_price($total);
 ?>
 
 <?php end_common_page(); ?>
