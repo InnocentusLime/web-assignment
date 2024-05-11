@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hattrick Magazine - Homepage</title>
     <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -21,7 +22,12 @@
 		</div>
 		<a href="#about">About Us</a>
 		<div class="topnav-right">
-			<a href="#search">Search</a>
+			<div class="search-container">
+				<form action="/action_page.php">
+				    <input type="text" placeholder="Search.." name="search">
+				    <button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			 </div>
 			<a href="#account">My account</a>
 			<a href="#cart">My cart</a>
 		</div>

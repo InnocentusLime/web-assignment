@@ -57,6 +57,35 @@ header h1 {
   float: right;
 }
 
+.topnav .search-container {
+  float: right;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 10px;
+  margin-left: 1px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
 .dropdown {
   float: left;
   overflow: hidden;
