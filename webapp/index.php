@@ -1,5 +1,5 @@
 <?php
-require "../famework/blocks.php";
+require "blocks.php";
 
 $servername = "localhost";
 $username = "root";
