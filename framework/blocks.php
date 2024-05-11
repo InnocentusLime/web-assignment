@@ -1,5 +1,5 @@
 <?php
-require "session_utils.php";
+require_once "session_utils.php";
 
 /**
  * Just to begin the html
@@ -8,7 +8,9 @@ require "session_utils.php";
  */
 function begin_common_html_with_head($title = "") {
     echo "<!DOCTYPE html>";
-    echo "<html><head>";
+    echo "<html lang=\"en\"><head>";
+    echo "<meta charset=\"UTF-8\">";
+    echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
     echo "<title>$title</title>";
     echo "<link rel=\"stylesheet\" href=\"style.css\">";
     echo "</head>";
@@ -75,4 +77,14 @@ function respond_with_error($err_code) {
 
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($body);
+}
+
+/**
+ * Shortcut to send just a status code and nothing else.
+ * @param int $status The status code
+ * @param string $extra Specify the extra
+ * @return void
+ */
+function respond_with_just_code($status, $extra = "") {
+    header($_SERVER["SERVER_PROTOCOL"] . " $status " . $extra);
 }
