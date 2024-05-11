@@ -52,6 +52,16 @@ function get_cart_items() {
 }
 
 /**
+ * Completely cuts the item out of the cart, ignoring the quanitity.
+ * @return void
+ */
+function nuke_from_cart($item_id) {
+    if (isset($_SESSION["cart"][$item_id])) {
+        unset($_SESSION["cart"][$item_id]);
+    }
+}
+
+/**
  * Removes an item from the cart
  * @param int $item_id the item id
  * @return bool true on success, false if there
