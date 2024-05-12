@@ -43,7 +43,7 @@ require "db_utils.php";
         echo "<h3>" . $tag_data["name"] . "</h3>";
         echo "<img src=\"img/tag/" . $tag_data["img_url"] . "\" alt=\"" .
                 $tag_data["name"] . "Products" . "\"/>";
-        echo "<a href=\"#\" class=\"button\">Explore</a>";
+        echo "<a href=\"/category_page.php?tag_id=" . $tag_id . "\" class=\"button\">Explore</a>";
         echo "</aritcle>";
     }
 ?>
