@@ -29,7 +29,7 @@ if (!$item_data) {
         <h2><?php echo $item_data["name"] ?></h2>
         <p><?php echo $item_data["descr"] ?></p>
         <p>Price: <?php echo format_price(intval($item_data["price"])) ?></p>
-        <a class="button" href="/api/add_to_cart.php?item_id=<?php echo $item_id ?>">Add to Cart</a>
+        <a class="button" href="javascript:void(0)" onClick="javascript:add_to_cart(<?php echo $item_id ?>)">Add to Cart</a>
     </div>
 </article>
 
