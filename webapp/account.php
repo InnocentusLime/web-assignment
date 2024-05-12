@@ -34,7 +34,7 @@ require_once "price_utils.php";
     <tbody>
 <?php
     foreach (get_user_orders($user_id) as $order) {
-        echo "<tr>";
+        echo "<tr onClick=\"javascript:go_to_order_page(" . $order["id"] . ")\">";
         echo "<td>" . $order["date"] . "</td>";
         echo "<td>" . $order["delivery_address"] . "</td>";
         echo "<td>" . format_price(get_order_price($order["id"])) . "</td>";

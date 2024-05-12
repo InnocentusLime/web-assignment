@@ -21,6 +21,10 @@ async function add_to_cart(x) {
 	}
 }
 
+function go_to_order_page(x) {
+	window.location.replace("/order_page.php?order_id=" + x);
+}
+
 async function logout() {
 	console.log("Logout");
 	const response = await fetch("/api/logout.php");
