@@ -1,6 +1,6 @@
 <section class="login-form">
     <h2>Login</h2>
-    <form action="/api/auth.php" method="get">
+    <form id="login_form">
         <input type="hidden" id="new" name="new" value="0">
         <div class="form-group">
             <label for="username">Username:</label>
@@ -10,7 +10,11 @@
             <label for="password">Password:</label>
             <input type="password" id="passwd" name="passwd" required>
         </div>
-        <input type=submit value="Login" class="button" onsubmit="javascript:login()"/>
+        <input type=submit value="Login" id="login_submit" class="button"/>
         Do not have an account? <a href="/auth.php?new=1">Register</a>
     </form>
 </section>
+<script>
+    let form = document.getElementById("login_form");
+    form.addEventListener('submit', do_login)
+</script>

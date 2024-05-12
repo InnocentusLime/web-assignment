@@ -3,18 +3,23 @@ function add_to_cart(x) {
     console.log("Add to cart", x);
 }
 
-function logout() {
+async function logout() {
 	console.log("Logout");
+	const response = await fetch("/api/logout.php");
+	const todos = await response.json();
+	console.log(todos);
 }
 
 function remove_from_cart(x) {
 	console.log("Remove from cart", x);
 }
 
-function login() {
-	console.log("Login")
+function do_login(event) {
+	event.preventDefault();
+	console.log("Login");
 }
 
-function register() {
+function do_register(event) {
+	event.preventDefault();
 	console.log("Register")
 }
