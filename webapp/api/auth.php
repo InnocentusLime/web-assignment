@@ -36,7 +36,8 @@ if ($new) {
         unset($login);
         unset($passwd_raw);
         if ($res) {
-            respond_with_json_ok("AUTH_API_REGISTER_OK");
+            // TODO: put user id
+            respond_with_json_ok(null);
         } else {
             respond_with_error("AUTH_API_BACKEND_ERROR");
         }

@@ -1,11 +1,24 @@
+const popup = Notification({
+	position: 'bottom-right',
+	duration: 4000,
+	isHidePrev: false,
+	isHideTitle: false,
+	maxOpened: 3,
+});
+
 async function add_to_cart(x) {
     // do request to /api/add_to_cart.php?item_id=x
     console.log("Add to cart", x);
 	const response = await fetch("/api/add_to_cart.php?item_id=" + x);
 	const data = await response.json();
 	console.log(data);
-	window.location.reload();
 
+	if (data.status == "ok") {
+		popup.info({
+			title: 'Success',
+			message: 'The product has been added to your cart!'
+		})
+	}
 }
 
 async function logout() {
