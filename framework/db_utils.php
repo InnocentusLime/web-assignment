@@ -346,3 +346,21 @@ function get_last_insert() {
 
     return mysqli_fetch_row($result)[0];
 }
+
+/**
+ * Get all the orders of the user
+ * @return array|bool
+ */
+function get_user_orders($user_id) {
+    global $dbconn;
+
+    $sql = "SELECT id,date,delivery_price,state,delivery_address FROM orders
+            WHERE user=$user_id";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (!$result) {
+        return false;
+    }
+
+    return $result;
+}
