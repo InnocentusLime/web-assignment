@@ -43,7 +43,7 @@ foreach (get_cart_items() as $item_id => $quant) {
     echo "<div class=\"item-details\">";
     echo "<h3>" . $items[$item_id]["name"] . "</h3>";
     echo "<p>Price: " . format_price($items[$item_id]["price"]) . " x " . $quant . "</p>";
-    echo "<a href=\"/api/remove_from_cart.php?item_id=" . $item_id . "\" class=\"button\">Remove</a>";
+    echo "<a class=\"button\" href=\"javascript:void(0)\" onClick=\"javascript:remove_from_cart(<?php echo" . $item_id . "?>)\">Remove</a>";
     echo "</div>";
     echo "</div>";
 
