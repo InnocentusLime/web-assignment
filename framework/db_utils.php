@@ -364,3 +364,19 @@ function get_user_orders($user_id) {
 
     return $result;
 }
+
+/**
+ * Get the overall order price
+ * @return int
+ */
+function get_order_price($order_id) {
+    global $dbconn;
+
+    $sql = "SELECT SUM(p.price) + o.delivery_price from products p
+            JOIN order_items oi ON p.id = oi.product_id
+            JOIN orders o ON o.id = oi.order_id
+            WHERE o.id = $order_id";
+    $result = mysqli_query($dbconn, $sql);
+
+    return mysqli_fetch_row($result)[0];
+}

@@ -1,5 +1,6 @@
 <?php
-require "db_utils.php";
+require_once "db_utils.php";
+require_once "price_utils.php";
 ?>
 
 <?php
@@ -25,8 +26,7 @@ require "db_utils.php";
     <thead>
         <tr>
             <th>date</th>
-            <th>address</th>
-            <th>delivery price</th>
+            <th>delivery address</th>
             <th>full price</th>
             <th>state</th>
         </tr>
@@ -37,8 +37,7 @@ require "db_utils.php";
         echo "<tr>";
         echo "<td>" . $order["date"] . "</td>";
         echo "<td>" . $order["delivery_address"] . "</td>";
-        echo "<td>" . $order["delivery_price"] . "</td>";
-        echo "<td>" . "TODO" . "</td>";
+        echo "<td>" . format_price(get_order_price($order["id"])) . "</td>";
         echo "<td>" . $order["state"] . "</td>";
         echo "</tr>";
     }
