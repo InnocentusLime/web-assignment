@@ -349,6 +349,7 @@ function get_last_insert() {
 
 /**
  * Get all the orders of the user
+ * @param int $user_id The user id
  * @return array|bool
  */
 function get_user_orders($user_id) {
@@ -379,4 +380,23 @@ function get_order_price($order_id) {
     $result = mysqli_query($dbconn, $sql);
 
     return mysqli_fetch_row($result)[0];
+}
+
+/**
+ * Get the order by its id
+ * @param int $order_id The order id
+ * @return array|bool
+ */
+function get_order_info($order_id) {
+    global $dbconn;
+
+    $sql = "SELECT id,user,date,delivery_price,state,delivery_address FROM orders
+            WHERE id=$order_id";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (!$result) {
+        return false;
+    }
+
+    return mysqli_fetch_assoc($result);
 }
