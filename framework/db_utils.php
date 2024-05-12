@@ -354,7 +354,7 @@ function get_last_insert() {
 function get_user_orders($user_id) {
     global $dbconn;
 
-    $sql = "SELECT date,delivery_price,state,delivery_address FROM orders
+    $sql = "SELECT id,date,delivery_price,state,delivery_address FROM orders
             WHERE user=$user_id";
     $result = mysqli_query($dbconn, $sql);
 
