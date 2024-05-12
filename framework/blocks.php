@@ -124,10 +124,15 @@ function item_card($item_data) {
  */
 function cart_item($item_data, $quant, $item_id, $for_cart) {
     echo "<div class=\"cart-item\">";
+    echo "<div class=\"cart-item-img\">";
     echo "<img src=\"/img/product/" . $item_data["img_url"] . "\"/>";
+    echo "</div>";
     echo "<div class=\"item-details\">";
     echo "<h3>" . $item_data["name"] . "</h3>";
-    echo "<p>Price: " . format_price($item_data["price"]) . " x " . $quant . "</p>";
+    echo "<div>";
+    echo "<a class=\"item-price\">" . format_price($item_data["price"]) . "</a>";
+    echo "<a class=\"item-quant\"> x " . $quant . "</a>";
+    echo "</div>";
     if ($for_cart) {
         echo "<a class=\"button\" href=\"javascript:void(0)\" onClick=\"javascript:remove_from_cart(" . $item_id . ")\">Remove</a>";
     } else {

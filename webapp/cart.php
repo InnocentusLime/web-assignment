@@ -28,7 +28,8 @@ foreach ($to_delete as $item_id) {
 <?php begin_common_page("main"); ?>
 
 <section class="cart">
-    <h2>My Cart</h2>
+<h2>My Cart</h2>
+<div class="cart-info"/>
 <?php
     foreach ($to_delete as $item_id) {
         echo "ITEM($item_id) no longer avaliable </br>";
