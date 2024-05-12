@@ -4,10 +4,6 @@ body, h1, h2, h3, p, ul, li, button {
   padding: 0;
 }
 
-body {
-  height: 100vh;
-}
-
 /* Global styles */
 body {
   font-family: Arial, sans-serif;
@@ -140,7 +136,6 @@ display: block;
 
 
 main {
-  height: 100%;
   padding: 20px;
 }
 
