@@ -78,12 +78,28 @@ function get_tag_info($tag_id) {
 
 /**
  * Selects latest 10 items
- * @return array
+ * @return array Array where each item is an assoc array
  */
 function get_latest_items10() {
     global $dbconn;
 
     $sql = "SELECT id, name, price, img_url from products order by id desc limit 10";
+    $result = mysqli_query($dbconn, $sql);
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+/**
+ * Selects all items from the specified category
+ * @return array Array where each item is an assoc array
+ */
+function get_items_for_tag($tag_id) {
+    global $dbconn;
+
+    $sql = "SELECT p.id, p.name, p.price, p.img_url from products p
+            JOIN product_tagging pt ON p.id = pt.product_id
+            JOIN tags t ON t.id = pt.tag_id
+            WHERE t.id = $tag_id";
     $result = mysqli_query($dbconn, $sql);
 
     return mysqli_fetch_all($result, MYSQLI_ASSOC);

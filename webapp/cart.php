@@ -27,23 +27,34 @@ foreach ($to_delete as $item_id) {
 
 <?php begin_common_page("main"); ?>
 
-Your items:</br>
-
+<section class="cart">
+    <h2>My Cart</h2>
 <?php
-foreach ($to_delete as $item_id) {
-    echo "ITEM($item_id) no longer avaliable </br>";
-}
-
+    foreach ($to_delete as $item_id) {
+        echo "ITEM($item_id) no longer avaliable </br>";
+    }
+?>
+    <div class="cart-items">
+<?php
 $total = 0;
 foreach (get_cart_items() as $item_id => $quant) {
-    echo "<img width=100 height=100 src=\"/img/product/" . $items[$item_id]["img_url"] . "\"/>";
-    echo " -- " . $items[$item_id]["name"];
-    echo ": " . format_price($items[$item_id]["price"]) . " x $quant </br>";
+    echo "<div class=\"cart-item\">";
+    echo "<img src=\"/img/product/" . $items[$item_id]["img_url"] . "\"/>";
+    echo "<div class=\"item-details\">";
+    echo "<h3>" . $items[$item_id]["name"] . "</h3>";
+    echo "<p>Price: " . format_price($items[$item_id]["price"]) . " x " . $quant . "</p>";
+    echo "<a href=\"/api/remove_from_cart.php?item_id=" . $item_id . "\" class=\"button\">Remove</a>";
+    echo "</div>";
+    echo "</div>";
 
     $total += $items[$item_id]["price"] * $quant;
 }
-
-echo "Your total: " . format_price($total);
 ?>
+    </div>
+    <div class="cart-total">
+        <p>Total: <?php echo format_price($total) ?></p>
+        <button class="button">Checkout</button>
+    </div>
+</section>
 
 <?php end_common_page(); ?>

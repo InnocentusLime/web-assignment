@@ -22,13 +22,7 @@ require "db_utils.php";
     <div class="product-grid">
 <?php
     foreach (get_latest_items10() as $item) {
-        echo "<article class=\"product-card\">";
-        echo "<img src=\"img/product/" . $item["img_url"] . "\" alt=\"Product " .
-                $item["id"] . "\"/>";
-        echo "<h3>" . $item["name"] . "</h3>";
-        echo "<a href=\"/product_page.php?item_id=" . $item["id"] .
-                "\" class=\"button\">View Details</a>";
-        echo "</article>";
+        item_card($item);
     }
 ?>
     </div>
