@@ -18,6 +18,6 @@ require "db_utils.php";
 <?php begin_common_page("Account"); ?>
 
 <?php echo "Hello, " . $user["login"] . "<br/>"; ?>
-<a href="/api/logout.php">Logout</a>
+<a href="javascript:void(0)" onClick="javascript:logout()">Logout</a>
 
 <?php end_common_page(); ?>
