@@ -24,12 +24,14 @@ if (!$item_data) {
 <?php begin_common_page("Product Page"); ?>
 
 <article class="product">
-<img src="/img/product/<?php echo $item_data["img_url"] ?>" alt="Product Image">
+    <div class="product-card-img">
+        <img src="/img/product/<?php echo $item_data["img_url"] ?>" alt="Product Image">
+    </div>
     <div class="product-details">
         <h2><?php echo $item_data["name"] ?></h2>
         <p><?php echo $item_data["descr"] ?></p>
-        <p>Price: <?php echo format_price(intval($item_data["price"])) ?></p>
-        <a class="button" href="javascript:void(0)" onClick="javascript:add_to_cart(<?php echo $item_id ?>)">Add to Cart</a>
+        <p class="product-price"><?php echo format_price(intval($item_data["price"])) ?></p>
+        <a class="button add-to-cart" href="javascript:void(0)" onClick="javascript:add_to_cart(<?php echo $item_id ?>)">add to cart</a>
     </div>
 </article>
 
