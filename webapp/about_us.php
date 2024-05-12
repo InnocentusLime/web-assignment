@@ -1,5 +1,5 @@
 <?php
-require "blocks.php";
+require_once "blocks.php";
 ?>
 
 <?php begin_common_page("Authentication"); ?>
