@@ -8,11 +8,11 @@ require_once "db_utils.php";
 
 <!-- Cover Page -->
 <section class="cover-image">
-    <img src="/img/cover-image.jpg" alt="Magazine Cover Image">
+    <img src="/img/cover-image.jpg" alt="Shop Cover Image">
 </section>
 <section class="cover-page">
-    <h2>Welcome to the Hattrick Magazine!</h2>
-    <p>Discover the latest trends in hats, caps, and panamas.</p>
+    <h2>Welcome to the Hattrick Shop!</h2>
+    <p>Discover the all possible trends in hats, caps, and panamas!</p>
 </section>
 
 <!-- Recent Products -->
