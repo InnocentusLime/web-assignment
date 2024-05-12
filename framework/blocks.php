@@ -9,10 +9,8 @@ require_once "session_utils.php";
 function begin_common_html_with_head($title = "") {
     echo "<!DOCTYPE html>";
     echo "<html lang=\"en\"><head>";
-    echo "<meta charset=\"UTF-8\">";
-    echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
+    readfile("../components/preamble.html");
     echo "<title>$title</title>";
-    echo "<link rel=\"stylesheet\" href=\"style.css\">";
     echo "</head>";
     echo "<body>";
 }
@@ -87,4 +85,28 @@ function respond_with_error($err_code) {
  */
 function respond_with_just_code($status, $extra = "") {
     header($_SERVER["SERVER_PROTOCOL"] . " $status " . $extra);
+}
+
+/**
+ * Redirects the user to a different url
+ * @param string $url the new url
+ * @return void
+ */
+function respond_with_redirect($url) {
+    header('Location: '. $url);
+}
+
+/**
+ * Prints HTML code used to render a product item in a grid
+ * @param array $item_data the item data. Required attributes: id, name, price, img_url
+ * @return void
+ */
+function item_card($item_data) {
+    echo "<article class=\"product-card\">";
+    echo "<img src=\"img/product/" . $item_data["img_url"] . "\" alt=\"Product " .
+            $item_data["id"] . "\"/>";
+    echo "<h3>" . $item_data["name"] . "</h3>";
+    echo "<a href=\"/product_page.php?item_id=" . $item_data["id"] .
+            "\" class=\"button\">View Details</a>";
+    echo "</article>";
 }

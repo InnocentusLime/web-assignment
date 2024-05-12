@@ -1,13 +1,24 @@
 <header>
-    <h1>Hattrick Magazine</h1>
+    <h1>Hattrick Store</h1>
     <div class="topnav">
 		<a href="/">Home</a>
-		<a href="#categories">Categories</a>
+		<div class="dropdown">
+			<button class="dropbtn">Category</button>
+			<div class="dropdown-content">
+			    <a href="/category_page.php?tag_id=3">Men</a>
+			    <a href="/category_page.php?tag_id=4">Women</a>
+			</div>
+		</div>
 		<a href="#about">About Us</a>
 		<div class="topnav-right">
-			<a href="#search">Search</a>
-			<a href="#account">My account</a>
+			<div class="search-container">
+				<form action="/action_page.php">
+				    <input type="text" placeholder="Search.." name="search">
+				    <button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			 </div>
+			<a href="/account.php">My account</a>
 			<a href="/cart.php">My cart</a>
-	    </div>
+		</div>
     </div>
 </header>

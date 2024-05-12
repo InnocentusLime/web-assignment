@@ -22,13 +22,7 @@ require "db_utils.php";
     <div class="product-grid">
 <?php
     foreach (get_latest_items10() as $item) {
-        echo "<article class=\"product-card\">";
-        echo "<img src=\"img/product/" . $item["img_url"] . "\" alt=\"Product " .
-                $item["id"] . "\"/>";
-        echo "<h3>" . $item["name"] . "</h3>";
-        echo "<a href=\"/product_page.php?item_id=" . $item["id"] .
-                "\" class=\"button\">View Details</a>";
-        echo "</article>";
+        item_card($item);
     }
 ?>
     </div>
@@ -49,7 +43,7 @@ require "db_utils.php";
         echo "<h3>" . $tag_data["name"] . "</h3>";
         echo "<img src=\"img/tag/" . $tag_data["img_url"] . "\" alt=\"" .
                 $tag_data["name"] . "Products" . "\"/>";
-        echo "<a href=\"#\" class=\"button\">Explore</a>";
+        echo "<a href=\"/category_page.php?tag_id=" . $tag_id . "\" class=\"button\">Explore</a>";
         echo "</aritcle>";
     }
 ?>
