@@ -56,6 +56,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["img"]["name"])). " has been uploaded.";
+    // TODO use get_last_insert() and update the img_url field instead.
     insert_item_info(
         $_POST["name"],
         $_POST["price"],

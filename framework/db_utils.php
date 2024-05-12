@@ -6,6 +6,7 @@ $dbconn;
 $insert_user;
 $get_user_by_login;
 $insert_item;
+$insert_order;
 
 /**
  * Connects to the website database
@@ -23,6 +24,10 @@ function connect_to_db() {
     global $prod_desc;
     global $prod_img_url;
     global $insert_item;
+    global $insert_order;
+    global $order_user_id;
+    global $order_delivery_address;
+    global $order_delivery_price;
 
     $servername = "localhost";
     $username = "root";
@@ -41,6 +46,8 @@ function connect_to_db() {
     mysqli_stmt_bind_param($get_user_by_login, "s", $user_login);
     $insert_item = mysqli_prepare($dbconn, "INSERT INTO products(name, price, descr, img_url) VALUES (?, ?, ?, ?)");
     mysqli_stmt_bind_param($insert_item, "siss", $prod_name, $prod_price, $prod_desc, $prod_img_url);
+    $insert_order = mysqli_prepare($dbconn, "INSERT INTO orders(user, delivery_price, delivery_address) VALUES (?, ?, ?)");
+    mysqli_stmt_bind_param($insert_order, "iss", $order_user_id, $order_delivery_price, $order_delivery_address);
 }
 
 function disconnect_from_db() {
@@ -248,4 +255,94 @@ function insert_item_info($item_name, $item_price, $item_desc, $item_img) {
     $prod_img_url = $item_img;
 
     mysqli_stmt_execute($insert_item);
+}
+
+/**
+ * Adds an order entry to the database. This function has SQL injection
+ * protection.
+ * @param int|null $user The user who placed order (null if not logged in)
+ * @param int $delivery_price Price caluclated at checkout
+ * @param string $delivery_address Delivery address
+ * @return bool
+ */
+function add_order($user, $delivery_price, $delivery_address) {
+    global $dbconn;
+    global $order_user_id;
+    global $order_delivery_price;
+    global $order_delivery_address;
+    global $insert_order;
+
+    $order_user_id = $user;
+    $order_delivery_price = $delivery_price;
+    $order_delivery_address = $delivery_address;
+
+    mysqli_execute($insert_order);
+    $result = mysqli_stmt_get_result($insert_order);
+
+    if (!$result && mysqli_errno($dbconn) != 0) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Adds item to the order. Adding the item to the order again
+ * doesn not cause an increment.
+ * @param int $order_id The order id
+ * @param int $item The item id
+ * @param int $quant The item quanitity
+ * @return bool
+ */
+function add_order_item($order_id, $item_id, $quant) {
+    global $dbconn;
+
+    $sql = "INSERT INTO order_items(order_id, product_id, quant) VALUES ($order_id, $item_id, $quant)";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (!$result && mysqli_errno($dbconn) != 0) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Begins a SQL transaction.
+ */
+function begin_transaction() {
+    global $dbconn;
+
+    mysqli_begin_transaction($dbconn, MYSQLI_TRANS_START_READ_WRITE);
+}
+
+/**
+ * Ends a SQL transaction
+ */
+function commit_transaction() {
+    global $dbconn;
+
+    mysqli_commit($dbconn);
+}
+
+/**
+ * Aborts a SQL transaction
+ */
+function abort_transaction() {
+    global $dbconn;
+
+    mysqli_rollback($dbconn);
+}
+
+/**
+ * Gets the last insert id
+ * @return int
+ */
+function get_last_insert() {
+    global $dbconn;
+
+    $sql = "SELECT LAST_INSERT_ID()";
+    $result = mysqli_query($dbconn, $sql);
+
+    return mysqli_fetch_row($result)[0];
 }
