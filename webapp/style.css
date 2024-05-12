@@ -224,7 +224,30 @@ background-color: #4da3ff;
 color: black;
 }
 
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
+.order-table thead {
+  text-transform: capitalize;
+}
+
+.order-table tr {
+  border-bottom: #007bff solid 1px;
+}
+
+.order-table-row {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.order-table-row:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #4da3ff;
+  color: black;
+  cursor: pointer;
+}
 
 footer {
   background-color: #333;

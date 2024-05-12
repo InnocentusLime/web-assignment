@@ -22,7 +22,7 @@ async function add_to_cart(x) {
 }
 
 function go_to_order_page(x) {
-	window.location.replace("/order_page.php?order_id=" + x);
+	window.location.href = "/order_page.php?order_id=" + x;
 }
 
 async function logout() {

@@ -19,10 +19,10 @@ require_once "price_utils.php";
 
 <?php begin_common_page("Account"); ?>
 
-<?php echo "Hello, " . $user["login"] . "<br/>"; ?>
-<a href="javascript:void(0)" onClick="javascript:logout()">Logout</a>
+<p><?php echo "Hello, " . $user["login"] ?></p>
+<a class="button" href="javascript:void(0)" onClick="javascript:logout()">Logout</a>
 
-<table>
+<table class="order-table">
     <thead>
         <tr>
             <th>date</th>
@@ -34,7 +34,7 @@ require_once "price_utils.php";
     <tbody>
 <?php
     foreach (get_user_orders($user_id) as $order) {
-        echo "<tr onClick=\"javascript:go_to_order_page(" . $order["id"] . ")\">";
+        echo "<tr class=\"order-table-row\" onClick=\"javascript:go_to_order_page(" . $order["id"] . ")\">";
         echo "<td>" . $order["date"] . "</td>";
         echo "<td>" . $order["delivery_address"] . "</td>";
         echo "<td>" . format_price(get_order_price($order["id"])) . "</td>";
