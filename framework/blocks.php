@@ -104,8 +104,10 @@ function respond_with_redirect($url) {
  */
 function item_card($item_data) {
     echo "<article class=\"product-card\">";
+    echo "<div class=\"product-card-img\">";
     echo "<img src=\"img/product/" . $item_data["img_url"] . "\" alt=\"Product " .
             $item_data["id"] . "\"/>";
+    echo "</div>";
     echo "<h3>" . $item_data["name"] . "</h3>";
     echo "<a href=\"/product_page.php?item_id=" . $item_data["id"] .
             "\" class=\"button\">View Details</a>";

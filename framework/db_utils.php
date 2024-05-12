@@ -109,7 +109,7 @@ function get_tag_info($tag_id) {
 function get_latest_items10() {
     global $dbconn;
 
-    $sql = "SELECT id, name, price, img_url from products order by id desc limit 10";
+    $sql = "SELECT id, name, price, img_url from products order by id desc limit 12";
     $result = mysqli_query($dbconn, $sql);
 
     return mysqli_fetch_all($result, MYSQLI_ASSOC);

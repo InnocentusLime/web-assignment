@@ -40,11 +40,13 @@ require_once "db_utils.php";
             continue;
         }
         echo "<article class=\"category-block\">";
-        echo "<h3>" . $tag_data["name"] . "</h3>";
+        echo "<div class=\"category-block-img\">";
         echo "<img src=\"img/tag/" . $tag_data["img_url"] . "\" alt=\"" .
                 $tag_data["name"] . "Products" . "\"/>";
+        echo "</div>";
+        echo "<h3>" . $tag_data["name"] . "</h3>";
         echo "<a href=\"/category_page.php?tag_id=" . $tag_id . "\" class=\"button\">Explore</a>";
-        echo "</aritcle>";
+        echo "</article>";
     }
 ?>
     </div>
