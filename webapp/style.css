@@ -134,6 +134,8 @@ header h1 {
   display: block;
 }
 
+
+
 main {
     padding: 20px;
 }
@@ -143,17 +145,16 @@ section {
 }
 
 .product-card {
-  float: left;
-  width: 33.33%;
+    float: left;
+    width: 33.33%;
 }
 
-/* Clear floats after the columns */
+
 .product-grid:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
-
 
 .product {
     background-color: #fff;
@@ -168,6 +169,11 @@ section {
 
 .product img {
     max-width: 300px;
+    margin-right: 20px;
+}
+
+.cart-item img {
+	max-width: 300px;
     margin-right: 20px;
 }
 
