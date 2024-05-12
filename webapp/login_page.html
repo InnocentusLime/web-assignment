@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<header>
+    <h1>Hattrick Store</h1>
+    <div class="topnav">
+        <a href="#home">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Category</button>
+            <div class="dropdown-content">
+                <a href="#men">Men</a>
+			    <a href="#women">Women</a>
+            </div>
+        </div>
+        <a href="#about">About Us</a>
+        <div class="topnav-right">
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+             </div>
+            <a href="#account" class="active">My account</a>
+            <a href="#cart">My cart</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="login-form">
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button class="button">Login</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Hattrick Store. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
