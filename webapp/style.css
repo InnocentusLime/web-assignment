@@ -172,6 +172,14 @@ section {
   margin-right: 20px;
 }
 
+.product-card img {
+  max-width: 300px;
+}
+
+.category-block img {
+  max-width: 300px;
+}
+
 .cart-item img {
 max-width: 300px;
   margin-right: 20px;

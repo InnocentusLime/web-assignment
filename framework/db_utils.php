@@ -209,6 +209,8 @@ function register_user($login, $passwd_raw) {
     }
 
     return true;
+}
+
 /**
  * Gets the latest used ID
  * @return int
