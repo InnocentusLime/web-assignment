@@ -5,6 +5,7 @@ require_once "blocks.php";
 $dbconn;
 $insert_user;
 $get_user_by_login;
+$insert_item;
 
 /**
  * Connects to the website database
@@ -17,6 +18,11 @@ function connect_to_db() {
     global $user_login;
     global $user_id;
     global $user_passwd;
+    global $prod_name;
+    global $prod_price;
+    global $prod_desc;
+    global $prod_img_url;
+    global $insert_item;
 
     $servername = "localhost";
     $username = "root";
@@ -29,11 +35,12 @@ function connect_to_db() {
         respond_with_db_down();
         exit;
     }
-
     $insert_user = mysqli_prepare($dbconn, "INSERT INTO users(login, passwd) VALUES (?, ?)");
     mysqli_stmt_bind_param($insert_user, "ss", $user_login, $user_passwd);
     $get_user_by_login = mysqli_prepare($dbconn, "SELECT id, passwd FROM users WHERE login = ?");
     mysqli_stmt_bind_param($get_user_by_login, "s", $user_login);
+    $insert_item = mysqli_prepare($dbconn, "INSERT INTO products(name, price, descr, img_url) VALUES (?, ?, ?, ?)");
+    mysqli_stmt_bind_param($insert_item, "siss", $prod_name, $prod_price, $prod_desc, $prod_img_url);
 }
 
 function disconnect_from_db() {
@@ -202,4 +209,41 @@ function register_user($login, $passwd_raw) {
     }
 
     return true;
+/**
+ * Gets the latest used ID
+ * @return int
+ */
+function get_next_item_id() {
+    global $dbconn;
+
+    $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES
+            WHERE TABLE_SCHEMA = \"hattrick\"
+            AND TABLE_NAME = \"products\"";
+    $result = mysqli_query($dbconn, $sql);
+
+    return mysqli_fetch_row($result)[0];
+}
+
+/**
+ * Simply adds an item to the database. Unlike most function, this one is explicitly
+ * resistent against SQL injections.
+ * @param string $item_name
+ * @param int $item_price
+ * @param string $item_desc
+ * @param string $img_url
+ */
+function insert_item_info($item_name, $item_price, $item_desc, $item_img) {
+    global $dbconn;
+    global $prod_name;
+    global $prod_price;
+    global $prod_desc;
+    global $prod_img_url;
+    global $insert_item;
+
+    $prod_name = $item_name;
+    $prod_price = $item_price;
+    $prod_desc = $item_desc;
+    $prod_img_url = $item_img;
+
+    mysqli_stmt_execute($insert_item);
 }

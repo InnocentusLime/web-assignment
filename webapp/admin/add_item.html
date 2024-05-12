@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="/api/add_item.php" method="post" enctype="multipart/form-data">
+  <label for="name">product name</label>
+  <input type="input" name="name" id="name"/>
+  <br/>
+  <label for="price">product price in cents</label>
+  <input type="input" name="price" id="price"/>
+  <br/>
+  <label for="descr">description</label>
+  <textarea name="descr" id="descr" rows="4" cols="50"></textarea>
+  <br/>
+  <input type="file" name="img" id="img"/>
+  <br/>
+  <input type="submit" value="Proceed" name="submit"/>
+</form>
+
+</body>
+</html>
