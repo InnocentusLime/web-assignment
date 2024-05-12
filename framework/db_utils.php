@@ -400,3 +400,21 @@ function get_order_info($order_id) {
 
     return mysqli_fetch_assoc($result);
 }
+
+/**
+ * Get the order items
+ * @param int $order_id The order id
+ * @return array|bool
+ */
+function get_order_items($order_id) {
+    global $dbconn;
+
+    $sql = "SELECT product_id, quant FROM order_items WHERE order_id=$order_id";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (!$result) {
+        return false;
+    }
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}

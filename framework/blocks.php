@@ -1,5 +1,6 @@
 <?php
 require_once "session_utils.php";
+require_once "price_utils.php";
 
 /**
  * Just to begin the html
@@ -109,4 +110,27 @@ function item_card($item_data) {
     echo "<a href=\"/product_page.php?item_id=" . $item_data["id"] .
             "\" class=\"button\">View Details</a>";
     echo "</article>";
+}
+
+/**
+ * Prints HTML code used to render a cart item
+ * @param array $item_data The item data. Required attributes: id, name, price, img_url
+ * @param int $quant Item quanity
+ * @param int $item_id Item id in the DB
+ * @param bool $for_cart If the item is rendered for the cart
+ * @return void
+ */
+function cart_item($item_data, $quant, $item_id, $for_cart) {
+    echo "<div class=\"cart-item\">";
+    echo "<img src=\"/img/product/" . $item_data["img_url"] . "\"/>";
+    echo "<div class=\"item-details\">";
+    echo "<h3>" . $item_data["name"] . "</h3>";
+    echo "<p>Price: " . format_price($item_data["price"]) . " x " . $quant . "</p>";
+    if ($for_cart) {
+        echo "<a class=\"button\" href=\"javascript:void(0)\" onClick=\"javascript:remove_from_cart(" . $item_id . ")\">Remove</a>";
+    } else {
+        echo "<a class=\"button\" href=\"/product_page.php?item_id=" . $item_id . "\">View</a>";
+    }
+    echo "</div>";
+    echo "</div>";
 }

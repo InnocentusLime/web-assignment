@@ -38,14 +38,7 @@ foreach ($to_delete as $item_id) {
 <?php
 $total = 0;
 foreach (get_cart_items() as $item_id => $quant) {
-    echo "<div class=\"cart-item\">";
-    echo "<img src=\"/img/product/" . $items[$item_id]["img_url"] . "\"/>";
-    echo "<div class=\"item-details\">";
-    echo "<h3>" . $items[$item_id]["name"] . "</h3>";
-    echo "<p>Price: " . format_price($items[$item_id]["price"]) . " x " . $quant . "</p>";
-    echo "<a class=\"button\" href=\"javascript:void(0)\" onClick=\"javascript:remove_from_cart(" . $item_id . ")\">Remove</a>";
-    echo "</div>";
-    echo "</div>";
+    cart_item($items[$item_id], $quant, $item_id, true);
 
     $total += $items[$item_id]["price"] * $quant;
 }

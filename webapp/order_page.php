@@ -22,6 +22,12 @@
         respond_with_redirect("/auth.php");
         exit;
     }
+
+    $order_items = get_order_items($order_id);
+    if (!$order_items) {
+        respond_with_just_code(500, "Order query error");
+        exit;
+    }
 ?>
 
 <?php begin_common_page("Order Page"); ?>
@@ -37,7 +43,19 @@ if (!$order_data) {
 } else if ($user_id != $order_data["user"]) {
     echo $invalid_order_msg;
 } else {
-    echo "Nice";
+    echo "address: " . $order_data["delivery_address"];
+    echo "delivery: " . format_price($order_data["delivery_price"]);
+    foreach ($order_items as $order_item) {
+        $item_id = $order_item["product_id"];
+        $quant = $order_item["quant"];
+        $item_data = get_item_info($item_id);
+        if (!$item_data) {
+            // TODO better response to item absense
+            continue;
+        }
+        cart_item($item_data, $quant, $item_id, false);
+    }
+    echo "Total: " . format_price(get_order_price($order_id));
 }
 ?>
 
