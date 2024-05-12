@@ -13,7 +13,6 @@ require_once "db_utils.php";
 <section class="cover-page">
     <h2>Welcome to the Hattrick Magazine!</h2>
     <p>Discover the latest trends in hats, caps, and panamas.</p>
-    <a href="#" class="button">Explore Now</a>
 </section>
 
 <!-- Recent Products -->
