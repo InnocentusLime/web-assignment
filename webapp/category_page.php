@@ -26,7 +26,7 @@ disconnect_from_db();
 <?php begin_common_page("Category Page"); ?>
 
 <section class="category">
-    <h2><?php echo $tag_data["name"] ?></h2>
+    <h2 class="category-name"><?php echo $tag_data["name"] ?></h2>
     <div class="product-grid">
 <?php
 foreach ($items as $item) {

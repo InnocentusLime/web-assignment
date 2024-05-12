@@ -47,7 +47,7 @@ foreach (get_cart_items() as $item_id => $quant) {
     </div>
     <div class="cart-total">
         <p>Total: <?php echo format_price($total) ?></p>
-        <button class="button">Checkout</button>
+        <a class="button" href="javascript:void(0)" onClick="javascript:place_order('Neapolis University Pafos')">Checkout</a>
     </div>
 </section>
 

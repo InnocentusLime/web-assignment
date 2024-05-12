@@ -6,6 +6,19 @@ const popup = Notification({
 	maxOpened: 3,
 });
 
+async function place_order(x) {
+	console.log("place order at address " + x);
+
+	const response = await fetch("/api/place_order.php?delivery_address=" + x);
+	const data = await response.json();
+	console.log(data);
+
+	if (data.status == "ok") {
+		let order_id = data.data.order_id;
+		window.location.replace("/order_page.php?order_id=" + order_id);
+	}
+}
+
 async function add_to_cart(x) {
     // do request to /api/add_to_cart.php?item_id=x
     console.log("Add to cart", x);

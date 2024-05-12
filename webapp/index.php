@@ -8,7 +8,7 @@ require_once "db_utils.php";
 
 <!-- Cover Page -->
 <section class="cover-image">
-    <img src="/img/cover-image.jpg" alt="Shop Cover Image">
+    <!-- <img src="/img/cover-img.png" alt="Shop Cover Image"> -->
 </section>
 <section class="cover-page">
     <h2>Welcome to the Hattrick Shop!</h2>

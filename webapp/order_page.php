@@ -34,6 +34,7 @@
 
 <?php
 $invalid_order_msg = "Invalid order id";
+$good = false;
 if (!$order_data) {
     echo $invalid_order_msg;
 } else if (is_null($order_data["user"])) {
@@ -43,20 +44,32 @@ if (!$order_data) {
 } else if ($user_id != $order_data["user"]) {
     echo $invalid_order_msg;
 } else {
-    echo "address: " . $order_data["delivery_address"];
-    echo "delivery: " . format_price($order_data["delivery_price"]);
-    foreach ($order_items as $order_item) {
-        $item_id = $order_item["product_id"];
-        $quant = $order_item["quant"];
-        $item_data = get_item_info($item_id);
-        if (!$item_data) {
-            // TODO better response to item absense
-            continue;
-        }
-        cart_item($item_data, $quant, $item_id, false);
-    }
-    echo "Total: " . format_price(get_order_price($order_id));
+    $good = true;
 }
 ?>
+
+<section class="cart">
+<h2>My Order</h2>
+<div class="cart-info"/>
+    <div class="cart-items">
+<?php
+foreach ($order_items as $order_item) {
+    $item_id = $order_item["product_id"];
+    $quant = $order_item["quant"];
+    $item_data = get_item_info($item_id);
+    if (!$item_data) {
+        // TODO better response to item absense
+        continue;
+    }
+    cart_item($item_data, $quant, $item_id, false);
+}
+?>
+    </div>
+    <div class="cart-total">
+        <p class="ship-address">Address: <?php echo $order_data["delivery_address"] ?></p>
+        <p>Delivery: <?php echo format_price($order_data["delivery_price"]) ?></p>
+        <p>Total: <?php echo format_price(get_order_price($order_id)) ?></p>
+    </div>
+</section>
 
 <?php end_common_page(); ?>

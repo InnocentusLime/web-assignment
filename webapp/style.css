@@ -187,6 +187,35 @@ section {
   align-items: center;
 }
 
+.cover-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  background-color: #011142;
+  background-image: url("/img/cover-img.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.category .category-name {
+  text-transform: capitalize;
+}
+
+.category-grid {
+  text-transform: capitalize;
+}
+
+.cover-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
 .product-card-img {
   width: 100%;
   height: 100%;
@@ -210,6 +239,10 @@ section {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ship-address {
+  font-size: 10px;
 }
 
 .cart h2 {
