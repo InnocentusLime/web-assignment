@@ -25,7 +25,7 @@ foreach ($to_delete as $item_id) {
 }
 ?>
 
-<?php begin_common_page("main"); ?>
+<?php begin_common_page("Cart"); ?>
 
 <section class="cart">
 <h2>My Cart</h2>

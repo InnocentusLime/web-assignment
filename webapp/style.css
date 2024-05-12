@@ -245,6 +245,26 @@ section {
   font-size: 10px;
 }
 
+.register-page, .login-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-page form, .login-page form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-page form .button, .login-page form .button {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .cart h2 {
   margin-bottom: 20px;
 }

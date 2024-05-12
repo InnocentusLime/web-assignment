@@ -45,3 +45,4 @@ if ($good) {
 }
 
 disconnect_from_db();
+empty_cart();

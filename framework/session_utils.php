@@ -11,6 +11,14 @@ function session_defaults() {
 }
 
 /**
+ * Empties the cart
+ * @return void
+ */
+function empty_cart() {
+    $_SESSION["cart"] = [];
+}
+
+/**
  * Resets session user to null. This effectively logs
  * the user out.
  * @return void

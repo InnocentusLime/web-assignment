@@ -71,6 +71,13 @@ async function do_login(event) {
 	if (data.status == "ok") {
 		window.location.replace("/account.php");
 	}
+
+	if (data.status == "err") {
+		popup.error({
+			title: 'Login error',
+			message: data.code,
+		})
+	}
 }
 
 async function do_register(event) {
@@ -85,5 +92,12 @@ async function do_register(event) {
 
 	if (data.status == "ok") {
 		window.location.replace("/account.php");
+	}
+
+	if (data.status == "err") {
+		popup.error({
+			title: 'Register error',
+			message: data.code,
+		})
 	}
 }
