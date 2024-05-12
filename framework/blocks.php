@@ -88,6 +88,15 @@ function respond_with_just_code($status, $extra = "") {
 }
 
 /**
+ * Redirects the user to a different url
+ * @param string $url the new url
+ * @return void
+ */
+function respond_with_redirect($url) {
+    header('Location: '. $url);
+}
+
+/**
  * Prints HTML code used to render a product item in a grid
  * @param array $item_data the item data. Required attributes: id, name, price, img_url
  * @return void

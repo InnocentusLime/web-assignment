@@ -6,7 +6,35 @@
  */
 function session_defaults() {
     $_SESSION["start"] = 0;
+    $_SESSION["user_id"] = null;
     $_SESSION["cart"] = [];
+}
+
+/**
+ * Resets session user to null. This effectively logs
+ * the user out.
+ * @return void
+ */
+function nuke_session_user() {
+    $_SESSION["user_id"] = null;
+}
+
+/**
+ * Gets current user id. Note that it is not guaranteed to be
+ * a valid user id.
+ * @return int|null
+ */
+function get_current_user_id() {
+    return $_SESSION["user_id"];
+}
+
+/**
+ * Sets current user id. As you can see, it is pretty easy. So
+ * please do not trust the user id.
+ * @param int $user_id
+ */
+function set_current_user_id($user_id) {
+    $_SESSION["user_id"] = $user_id;
 }
 
 /**
