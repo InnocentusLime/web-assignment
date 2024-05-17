@@ -10,6 +10,7 @@ $delivery_address = $_GET["delivery_address"];
 
 session_start_if_none();
 connect_to_db();
+begin_transaction();
 
 $user = get_current_user_id();
 if (!check_login_or_nuke()) {
